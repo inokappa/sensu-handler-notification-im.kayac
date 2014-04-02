@@ -23,11 +23,7 @@ class ImkayacNotif < Sensu::Handler
     begin
       timeout(3) do
         # improvements :-<
-        if @event['action'].eql?("resolve")
-          p ImKayac.to("#{user}").password("#{pass}").post("#{event_action} - #{event_name} - #{message}")
-        else
-          p ImKayac.to("#{user}").password("#{pass}").post("#{event_action} - #{event_name} - #{message}")
-        end
+        p ImKayac.to("#{user}").password("#{pass}").post("#{event_action} - #{event_name} - #{message}")
       end
     rescue Timeout::Error
       puts "im.kayac -- timed out while attempting to message"
